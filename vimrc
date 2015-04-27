@@ -1,3 +1,6 @@
+set nocompatible    " vim, not vi
+set encoding=utf-8  " Use utf-8 as standard
+
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 execute pathogen#infect()
 syntax on
@@ -57,23 +60,25 @@ let g:NERDTreeWinSize = 50
 
 " Syntastic
 let g:syntastic_javascript_checkers = ['jsxhint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 0        " No signs in the gutter
 
- " jsx syntax in .js files
- let g:jsx_ext_required = 0
+ let g:jsx_ext_required = 0             " jsx syntax in .js files
 
-" Tern
-let tern#is_show_argument_hints_enabled = 1
 " ternjs -- https://github.com/marijnh/tern_for_vim & http://usevim.com/2013/05/24/tern/
+let tern#is_show_argument_hints_enabled = 1
 nmap <leader>td :TernDoc<CR>
 nmap <leader>tt :TernType<CR>
 nmap <leader>tb :TernDefPreview<CR>
 nmap <leader>tr :TernRename<CR>
 
+" Navigating buffers
+nmap [ :bp<CR>
+nmap ] :bn<CR>
+nmap \ :b#<CR>
+
+:nmap <Leader>s :source $MYVIMRC
+
+map fun<Tab> function () {<Esc>o}<Esc>k0f(
+nmap fun<Tab> ifunction () {<Esc>o}<Esc>k0f(
