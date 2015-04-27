@@ -3,9 +3,47 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" set backup dirs
+set backupdir=~/.vim/swp_backups//
+set directory=~/.vim/swp_backups//
+
+set ruler           " position of cursor
+set number          " line number
+set showcmd         " commands
+set hidden          " supress warning when switching away from an unsaved buffer
+set t_Co=256        " We will assume we're in a terminal that has 256 colors to work with
+set shiftwidth=4    " Tabs width
+set tabstop=4       " Tabs width
+set expandtab       " Insert spaces and not tabs
+set autoindent      " auto indent
+set smartindent     " smart indent
+set smarttab        " tab and backspace are smart
+set backspace=indent,eol,start  " Makes backspace work like in most other programs
+set linebreak       " don't makes line breaks in the middle of a word
+set incsearch       " incremental search
+set ignorecase      " ignore cases in searches, unless...
+set smartcase       " case-sensitive if search contains an uppercase character
+let g:loaded_matchparen= 1  " Don't highlight matching brackets
+set suffixesadd+=.js " so `gf` works with requireJS
 " Help with tab completion in ex mode (opening files, remembering commands, etc)
 set wildmenu
 set wildmode=longest:full,full
+
+" Function to strip white space
+function! <SID>StripTrailingWhitespaces()
+    " Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+    " Do the business:
+    %s/\s\+$//e
+    " Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" fire stripping white space on saving the file
+autocmd BufWritePre *.js :call <SID>StripTrailingWhitespaces()
 
 " For use when creating own shortcuts
 let mapleader = ","
@@ -39,4 +77,3 @@ nmap <leader>tt :TernType<CR>
 nmap <leader>tb :TernDefPreview<CR>
 nmap <leader>tr :TernRename<CR>
 
-nmap <C-Up> V
