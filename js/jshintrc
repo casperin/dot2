@@ -1,0 +1,10 @@
+{
+    "undef": true,
+    "browser": true,
+    "esnext": true,
+
+    "globals": {
+        "require": false,
+        "module": false
+    }
+}
