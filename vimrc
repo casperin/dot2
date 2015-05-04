@@ -59,7 +59,8 @@ map <leader>n :NERDTreeFind<CR>
 let g:NERDTreeWinSize = 50
 
 " Syntastic
-let g:syntastic_javascript_checkers = ['jsxhint']
+"let g:syntastic_javascript_checkers = ['jsxhint']
+autocmd FileType javascript let b:syntastic_checkers = findfile('.jscsrc', '.;') != '' ? ['jscs'] : ['jsxhint']
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 0        " No signs in the gutter
@@ -74,9 +75,10 @@ nmap <leader>tb :TernDefPreview<CR>
 nmap <leader>tr :TernRename<CR>
 
 " Navigating buffers
-nmap [ :bp<CR>
-nmap ] :bn<CR>
-nmap \ :b#<CR>
+nmap <Left> :bp<CR>
+nmap <Right> :bn<CR>
+nmap <Up> :b#<CR>
+nmap <Down> :ls<CR>
 
 :nmap <Leader>s :source $MYVIMRC
 
