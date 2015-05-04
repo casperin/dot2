@@ -74,13 +74,18 @@ nmap <leader>tt :TernType<CR>
 nmap <leader>tb :TernDefPreview<CR>
 nmap <leader>tr :TernRename<CR>
 
-" Navigating buffers
-nmap <Left> :bp<CR>
-nmap <Right> :bn<CR>
-nmap <Up> :b#<CR>
-nmap <Down> :ls<CR>
-
 :nmap <Leader>s :source $MYVIMRC
 
-map fun<Tab> function () {<Esc>o}<Esc>k0f(
+imap fun<Tab> function () {<Esc>o}<Esc>k0f(
 nmap fun<Tab> ifunction () {<Esc>o}<Esc>k0f(
+
+" Visual mode deleting (cutting to the black hole)
+xnoremap p "_dP
+xnoremap s "_d
+
+" Navigating buffers
+map <C-h> :bp<CR>
+map <C-l> :bn<CR>
+map <C-j> :b#<CR>
+map <C-k> :ls<CR>:b
+
