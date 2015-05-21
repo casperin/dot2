@@ -88,4 +88,8 @@ map <C-h> :bp<CR>
 map <C-l> :bn<CR>
 map <C-j> :b#<CR>
 map <C-k> :ls<CR>:b
+map Q :bd<CR>
 
+" FuzzyFinder
+map <leader>b :FufBuffer<CR>
+map <leader>f :FufFile<CR>
